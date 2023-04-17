@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container {
+  width: 900px;
+  height: 80%;
+  background-color: aliceblue;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+
+  flex-direction: column;
+}
+
+.title {
+  flex: 0 1 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+}
+
+.app-display-container {
+  width: 600px;
+  flex: 2 1 auto;
+  background-color: aqua;
+  border-radius: 4px;
+}
+
+.app-form {
+  flex: 1 1 auto;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.city-name-container {
+  flex: 0 1 50px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: antiquewhite;
+}
+.city-name-container h2 {
+  font-size: 30px;
+  border-radius: 4px;
+}
+
+.app-form input {
+  font: 30px;
+  letter-spacing: 2px;
+  padding: 6px 20px;
+  font-weight: bold;
+  line-height: 20px;
+  font-size: 24px;
+  border-radius: 4px;
+}
