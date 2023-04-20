@@ -93,7 +93,7 @@ body {
 
 .app-display-logo.active {
   opacity: 1;
-  animation: fade 1s linear;
+  animation: fade 2s linear;
 }
 
 @keyframes fade {

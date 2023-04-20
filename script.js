@@ -8,7 +8,6 @@ searchForm.addEventListener("submit", (e) => {
   app.setLocationName(e.target["city-input"].value);
   app.apiSearch(e.target["city-input"].value);
   e.target["city-input"].value = "";
-  appDisplayLogo.classList.remove("active");
   app.updateDomContent();
 });
 
@@ -48,9 +47,8 @@ const app = (function () {
     `);
 
     currentJsonData = await request.json();
-    updateDomContent();
+    await updateDomContent();
     setLocationName(currentJsonData.location.name);
-    appDisplayLogo.classList.add("active");
   }
 
   // clearDomContent
@@ -59,7 +57,17 @@ const app = (function () {
   }
 
   // uploadDomContent
-  function updateDomContent() {
+  async function updateDomContent() {
+    appDisplayLogo.classList.add("active");
+    appDisplayLogo.classList.add("loading");
+    await new Promise((resolve, reject) => {
+      appDisplayLogo.style.backgroundImage = `url(${"./imgs/loading-gif.gif"})`;
+      setTimeout(() => {
+        resolve();
+      }, 1500);
+    });
+    appDisplayLogo.classList.remove("active");
+    appDisplayLogo.classList.remove("loading");
     console.log(currentJsonData.current.condition.icon);
     appDisplayLogo.style.backgroundImage = `url(${currentJsonData.current.condition.icon})`;
   }
