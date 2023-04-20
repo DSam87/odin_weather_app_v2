@@ -8,7 +8,7 @@ searchForm.addEventListener("submit", (e) => {
   app.setLocationName(e.target["city-input"].value);
   app.apiSearch(e.target["city-input"].value);
   e.target["city-input"].value = "";
-
+  appDisplayLogo.classList.remove("active");
   app.updateDomContent();
 });
 
@@ -50,6 +50,7 @@ const app = (function () {
     currentJsonData = await request.json();
     updateDomContent();
     setLocationName(currentJsonData.location.name);
+    appDisplayLogo.classList.add("active");
   }
 
   // clearDomContent
