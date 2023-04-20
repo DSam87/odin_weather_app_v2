@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Lato", sans-serif;
 }
 
 body {
@@ -10,6 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(70, 70, 70);
 }
 
 .app-container {
@@ -21,6 +23,7 @@ body {
   align-items: center;
 
   flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.131);
 }
 
 .title {
@@ -29,13 +32,20 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 36px;
+  color: white;
 }
 
 .app-display-container {
   width: 600px;
   flex: 2 1 auto;
-  background-color: aqua;
+  background-color: rgba(0, 0, 0, 0.131);
   border-radius: 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .app-form {
@@ -53,7 +63,9 @@ body {
   justify-content: center;
   align-items: center;
 
-  background-color: antiquewhite;
+  background-color: rgba(0, 0, 0, 0.131);
+  color: white;
+  margin-top: 50px;
 }
 .city-name-container h2 {
   font-size: 30px;
@@ -68,4 +80,13 @@ body {
   line-height: 20px;
   font-size: 24px;
   border-radius: 4px;
+  text-align: center;
+}
+
+.app-display-logo {
+  width: 250px;
+  height: 250px;
+  background: url(mountain.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
 }

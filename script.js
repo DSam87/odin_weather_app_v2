@@ -1,14 +1,39 @@
+const searchForm = document.querySelector(".app-form");
+const cityNameContainer = document.querySelector(".city-name-container h2");
+const appDisplayContainer = document.querySelector(".app-display-container");
+const appDisplayLogo = document.querySelector(".app-display-logo");
+
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  app.setLocationName(e.target["city-input"].value);
+  app.apiSearch(e.target["city-input"].value);
+  e.target["city-input"].value = "";
+
+  app.updateDomContent();
+});
+
 const app = (function () {
   let location = "";
   let locationLat;
   let locationLang;
-  let map;
+  let currentJsonData;
+  let backgroundUrl;
 
-  function updateLocation(name) {
-    location = name;
+  function setLocationName(locationName) {
+    updateLocation(
+      locationName.charAt(0).toUpperCase() + locationName.slice(1).toLowerCase()
+    );
+    updateDomLocation();
   }
 
-  // get current location
+  function updateDomLocation() {
+    cityNameContainer.innerHTML = location;
+  }
+
+  function updateLocation(locationName) {
+    location = locationName;
+  }
+
   function getCurrentLocation() {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -16,22 +41,27 @@ const app = (function () {
   }
 
   // api search location
-
-  async function apiSearch() {
+  async function apiSearch(location) {
+    console.log(location);
     const request =
       await fetch(`http://api.weatherapi.com/v1/current.json?key=4b15ef2ee0bb4c44a9c203050231204&q=${location}&aqi=no
     `);
+
+    currentJsonData = await request.json();
+    updateDomContent();
+    setLocationName(currentJsonData.location.name);
   }
 
-  // update dom location
-
-  // loader icon
-
   // clearDomContent
+  function clearDomContent() {
+    console.log("clearDomContent");
+  }
 
   // uploadDomContent
-
-  // store location
+  function updateDomContent() {
+    console.log(currentJsonData.current.condition.icon);
+    appDisplayLogo.style.backgroundImage = `url(${currentJsonData.current.condition.icon})`;
+  }
 
   async function startApp() {
     const data = await getCurrentLocation();
@@ -39,20 +69,19 @@ const app = (function () {
       await fetch(`http://api.weatherapi.com/v1/current.json?key=4b15ef2ee0bb4c44a9c203050231204&q=${data.coords.latitude},${data.coords.longitude}&aqi=no
     `);
 
-    const requestJson = await request.json();
-  }
-
-  function sayHello() {
-    console.log(locationLat);
+    currentJsonData = await request.json();
+    updateDomContent();
+    setLocationName(currentJsonData.location.name);
   }
 
   return {
     startApp,
-    sayHello,
     getCurrentLocation,
+    setLocationName,
+    updateDomContent,
+    apiSearch,
   };
 })();
 
 app.getCurrentLocation();
 app.startApp();
-app.getCurrentLocation();
