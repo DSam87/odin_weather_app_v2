@@ -43,7 +43,7 @@ const app = (function () {
   async function apiSearch(location) {
     console.log(location);
     const request = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=4b15ef2ee0bb4c44a9c203050231204&q=${location}&aqi=no
+      `https://api.weatherapi.com/v1/current.json?key=4b15ef2ee0bb4c44a9c203050231204&q=${location}&aqi=no
     `,
       { mode: "cors" }
     );
@@ -77,7 +77,7 @@ const app = (function () {
   async function startApp() {
     const data = await getCurrentLocation();
     const request = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=4b15ef2ee0bb4c44a9c203050231204&q=${data.coords.latitude},${data.coords.longitude}&aqi=no
+      `https://api.weatherapi.com/v1/current.json?key=4b15ef2ee0bb4c44a9c203050231204&q=${data.coords.latitude},${data.coords.longitude}&aqi=no
     `,
       { mode: "cors" }
     );
