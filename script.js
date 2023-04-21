@@ -42,9 +42,11 @@ const app = (function () {
   // api search location
   async function apiSearch(location) {
     console.log(location);
-    const request =
-      await fetch(`http://api.weatherapi.com/v1/current.json?key=4b15ef2ee0bb4c44a9c203050231204&q=${location}&aqi=no
-    `);
+    const request = await fetch(
+      `http://api.weatherapi.com/v1/current.json?key=4b15ef2ee0bb4c44a9c203050231204&q=${location}&aqi=no
+    `,
+      { mode: "cors" }
+    );
 
     currentJsonData = await request.json();
     await updateDomContent();
@@ -74,9 +76,11 @@ const app = (function () {
 
   async function startApp() {
     const data = await getCurrentLocation();
-    const request =
-      await fetch(`http://api.weatherapi.com/v1/current.json?key=4b15ef2ee0bb4c44a9c203050231204&q=${data.coords.latitude},${data.coords.longitude}&aqi=no
-    `);
+    const request = await fetch(
+      `http://api.weatherapi.com/v1/current.json?key=4b15ef2ee0bb4c44a9c203050231204&q=${data.coords.latitude},${data.coords.longitude}&aqi=no
+    `,
+      { mode: "cors" }
+    );
 
     currentJsonData = await request.json();
     updateDomContent();

@@ -21,6 +21,7 @@ body {
   display: flex;
   /* justify-content: center; */
   align-items: center;
+  border-radius: 7px;
 
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.131);
@@ -46,6 +47,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 7px;
 }
 
 .app-form {
@@ -66,6 +68,7 @@ body {
   background-color: rgba(0, 0, 0, 0.131);
   color: white;
   margin-top: 50px;
+  border-radius: 7px;
 }
 .city-name-container h2 {
   font-size: 30px;
